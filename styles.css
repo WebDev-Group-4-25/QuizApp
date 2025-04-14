@@ -228,19 +228,20 @@ body {
 
      transform: scaleX(0);
      transform-origin: left;
-     transition: background-color 0.3s ease;
-     animation: timerAnim 10s linear forwards;
-     border-radius: 100px;
+     transition: transform 10s linear, background-color 0.5s ease-in-out;
 }
 
-@keyframes timerAnim {
-     0% {
-          transform: scaleX(0);
-     }
+/* Color states */
+.timer-fill.white {
+     background-color: #D5CDCD;
+}
 
-     100% {
-          transform: scaleX(1);
-     }
+.timer-fill.orange {
+     background-color: #B95A0C;
+}
+
+.timer-fill.red {
+     background-color: #AC0C0C;
 }
 
 .options-con {
@@ -279,7 +280,7 @@ body {
 
      box-sizing: border-box;
 
-     color:#1e1e1e;
+     color: #1e1e1e;
      font-weight: 500;
      padding: 10px;
 }
