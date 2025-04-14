@@ -1,17 +1,20 @@
+let hasAnswered = false;
+
 $(document).ready(function () {
      let questions = [];
      let current = 0;
-     let timerDuration = 10;  // Duration for each question's timer (10 seconds)
-     let timerInterval;  // Variable to store the interval ID for clearing it
+     let timerDuration = 10;
+     let timerInterval;
+     let timerTimeout; 
 
-     // Load questions from the JSON file
+     // AJAX Implementation: Load questions from the JSON file
      $.ajax({
-          url: 'questions.json',  // URL of the JSON file
+          url: 'questions.json',
           type: 'GET',
           dataType: 'json',
           success: function (data) {
-               questions = data;  // Store the questions in the 'questions' array
-               loadQuestion(current);  // Load the first question
+               questions = data; 
+               loadQuestion(current);
           },
           error: function () {
                alert("Failed to load questions.");
@@ -20,15 +23,14 @@ $(document).ready(function () {
 
      // Load a specific question based on the current index
      function loadQuestion(index) {
+          hasAnswered = false;
+
           const q = questions[index];
           $(".question-text").text(q.text);
           $(".number-question p").text((index + 1) + " / " + questions.length);
 
           $(".option-box").each(function (i) {
-               $(this).text(q.options[i]);
-               $(this).off('click').on('click', function () {
-                    nextQuestion();  // Move to the next question when an option is selected
-               });
+               $(this).text(q.options[i]).off('click').on('click', nextQuestion);
           });
 
           // Reset and start the timer for the new question
@@ -40,10 +42,10 @@ $(document).ready(function () {
      function resetTimer() {
           const timer = $(".timer-fill");
           timer.removeClass("orange red").addClass("white");
-          timer.css({
-               transform: "scaleX(0)",
-               transition: "none"
-          });
+          timer.css({ transform: "scaleX(0)", transition: "none" });
+          
+          clearInterval(timerInterval);
+          clearTimeout(timerTimeout);
 
           // Force reflow to restart animation cleanly
           void timer[0].offsetWidth;
@@ -55,29 +57,27 @@ $(document).ready(function () {
           let elapsedTime = 0;
 
           // Restart transition and animation
-          timer.css({
-               transition: "transform 10s linear, background-color 0.5s ease-in-out",
-               transform: "scaleX(1)"
-          });
-
-          timer.removeClass("orange red").addClass("white");
+          timer.css({ 
+               transition: "transform 10s linear, background-color 0.5s ease-in-out", 
+               transform: "scaleX(1)" 
+          }).removeClass("orange red").addClass("white");
 
           timerInterval = setInterval(function () {
                elapsedTime += 0.1;
 
                // Change color based on elapsed time
                timer.removeClass("white orange red");
-               if (elapsedTime >= 8) {
-                    timer.addClass("red");
-               } else if (elapsedTime >= 5) {
-                    timer.addClass("orange");
-               } else {
-                    timer.addClass("white");
-               }
+               if (elapsedTime >= 8) timer.addClass("red");
+               else if (elapsedTime >= 5) timer.addClass("orange");
+               else timer.addClass("white");
           }, 100);
 
-          setTimeout(() => {
-               clearInterval(timerInterval);
+          timerTimeout = setTimeout(() => {
+               clearInterval(timerInterval); 
+               if (!hasAnswered) {
+                    hasAnswered = true;
+                    nextQuestion();
+               }
           }, timerDuration * 1000);
      }
 
@@ -88,7 +88,7 @@ $(document).ready(function () {
                loadQuestion(current);
           } else {
                $(".question-text").text("You’ve completed the quiz!");
-               $(".option-box").hide();  // Hide options after the last question
+               $(".option-box").hide(); 
           }
      }
 
