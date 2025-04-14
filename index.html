@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Quiz App</title>
+     <link rel="stylesheet" href="styles.css" />
+     <script src="script.js"></script>
+</head>
+
+<body>
+     <div class="background-image"></div>
+
+     <div class="streak-counter">
+          <img src="assets/fire-flame.gif" alt="Streak Icon" />
+          <p>25</p>
+     </div>
+
+     <div class="avatar-container">
+          <img src="assets/coder-ai.png" alt="Girl Developer" />
+     </div>
+
+     <div class="avatar-bubble-chat">
+          <div class="bubble-tail-small"></div>
+          <div class="bubble-tail-large"></div>
+          <div class="bubble-chat">
+               <span class="bubble-text">Hello there!</span>
+               <span class="bubble-text"></span>
+               <span class="typing" style="display: none">...</span>
+          </div>
+     </div>
+
+     <div class="question-con">
+          <div class="number-question">
+               <p>5 / 10</p>
+          </div>
+          <div class="question-box"></div>
+
+          <div class="timer-bar">
+               <div class="timer-fill"></div>
+          </div>
+
+          <div class="options-con">
+               <div class="option-box"></div>
+               <div class="option-box"></div>
+               <div class="option-box"></div>
+               <div class="option-box"></div>
+          </div>
+
+          <div class="buttons-con">
+               <div class="back-button"></div>
+               <div class="next-button"></div>
+          </div>
+     </div>
+
+     <script>
+          const messages = [
+               "Good luck! 💪🏽",
+               "Great job! 👏🏽",
+               "Someone's been practicing! 🤓"
+          ];
+
+          let current = 0;
+
+          function cycleMessages() {
+               if (current >= messages.length) return;
+
+               showBubble(messages[current], 1200, 4000); // typing delay, stay duration
+
+               // Show next message after total delay (typing + stay + pause)
+               setTimeout(() => {
+                    current++;
+                    cycleMessages(); // call recursively
+               }, 1200 + 4000 + 1000); // adjust this for timing between
+          }
+
+          // Start the cycle after initial delay
+          setTimeout(() => {
+               cycleMessages();
+          }, 2000); // wait 2s before first message
+     </script>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,326 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: "Poppins", sans-serif;
+     color: #D5CDCD;
+     /* by default */
+}
+
+html,
+body {
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     overscroll-behavior: none;
+}
+
+.background-image {
+     background-image: url("assets/background.png");
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     height: 100vh;
+     width: 100%;
+     position: fixed;
+     z-index: -1;
+}
+
+.streak-counter {
+     position: absolute;
+     right: 20px;
+     top: 126px;
+     z-index: 10;
+     width: 102px;
+     height: 50px;
+
+     background: rgba(0, 0, 0, 0.41);
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+          inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+     backdrop-filter: blur(50px);
+     border-radius: 100px;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     gap: 10px;
+     padding: 0 10px;
+     margin: 10px;
+}
+
+.streak-counter p {
+     height: 33px;
+     width: 33px;
+     font-weight: 600;
+     font-size: 20px;
+     line-height: 30px;
+     display: flex;
+     align-items: center;
+     text-align: center;
+     text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+     line-height: 1;
+}
+
+.streak-counter img {
+     width: 33px;
+     height: 33px;
+     filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+}
+
+.avatar-container {
+     position: absolute;
+     width: 193px;
+     height: 193px;
+     left: 20px;
+     top: 30px;
+}
+
+.avatar-bubble-chat {
+     position: absolute;
+     top: 60px;
+}
+
+.bubble-chat {
+     position: absolute;
+     left: 200px;
+     top: 60px;
+
+     display: inline-block;
+     padding: 10px 20px;
+
+     background: rgba(213, 205, 205, 0.41);
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+          inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+     backdrop-filter: blur(50px);
+     border-radius: 100px;
+
+     white-space: nowrap;
+     overflow: hidden;
+     width: 0;
+     opacity: 0;
+
+     transition: width 0.4s ease, opacity 0.2s ease;
+}
+
+.bubble-chat.show {
+     opacity: 1;
+}
+
+
+.typing {
+     display: inline-block;
+     overflow: hidden;
+     vertical-align: bottom;
+     width: 1ch;
+     animation: typingDots 1.2s steps(3, end) infinite;
+}
+
+@keyframes typingDots {
+     0% {
+          content: ".";
+     }
+
+     33% {
+          content: "..";
+     }
+
+     66% {
+          content: "...";
+     }
+}
+
+
+
+.bubble-tail-large,
+.bubble-tail-small {
+     position: absolute;
+     background: rgba(213, 205, 205, 0.41);
+     box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+     backdrop-filter: blur(50px);
+     border-radius: 50%;
+     opacity: 0;
+     transform: scale(0);
+     transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.bubble-tail-large {
+     width: 20px;
+     height: 20px;
+     left: 180px;
+     top: 50px;
+}
+
+.bubble-tail-small {
+     width: 10px;
+     height: 10px;
+     left: 165px;
+     top: 40px;
+}
+
+.avatar-bubble-chat.show {
+     opacity: 1;
+     transform: scale(1);
+}
+
+.bubble-tail-large.show,
+.bubble-tail-small.show {
+     opacity: 1;
+     transform: scale(1);
+}
+
+.question-con {
+     margin-top: 160px;
+     padding: 15px;
+     width: 100%;
+     max-width: 100%;
+
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     position: relative;
+}
+
+.number-question {
+     width: 80px;
+     height: 45px;
+     background: #1e1e1e;
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+     border-radius: 100px;
+
+     background: #1e1e1e;
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+     border-radius: 100px;
+
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+     z-index: 2;
+     position: relative;
+     margin-bottom: -20px;
+     /* 👈 this causes the overlap */
+}
+
+.number-question p {
+     font-weight: 400;
+     font-size: 16px;
+     line-height: 1.5;
+     text-align: center;
+     letter-spacing: 0.05em;
+     margin: 0;
+     line-height: 1;
+     transform: translateY(1px);
+     text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+.question-box {
+     width: 100%;
+     height: 305px;
+
+     background: rgba(0, 0, 0, 0.41);
+     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+     backdrop-filter: blur(50px);
+     border-radius: 24px;
+
+     z-index: 1;
+     position: relative;
+}
+
+.timer-bar {
+     width: 100%;
+     max-width: 100%;
+     height: 20px;
+     margin: 10px 0;
+     padding: 8px;
+
+     background: rgba(0, 0, 0, 0.41);
+     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+     border-radius: 100px;
+
+     display: flex;
+     align-items: center;
+}
+
+.timer-fill {
+     width: 100%;
+     height: 10px;
+
+     box-shadow: 4px 0px 13.9px rgba(0, 0, 0, 0.25);
+     border-radius: 100px;
+     background-color: white;
+
+     transform: scaleX(0);
+     transform-origin: left;
+     transition: background-color 0.3s ease;
+     animation: timerAnim 10s linear forwards;
+     border-radius: 100px;
+}
+
+@keyframes timerAnim {
+     0% {
+          transform: scaleX(0);
+     }
+
+     100% {
+          transform: scaleX(1);
+     }
+}
+
+.options-con {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 100%;
+     max-width: 100%;
+     padding: 10px;
+     background: rgba(0, 0, 0, 0.41);
+     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+     backdrop-filter: blur(50px);
+     border-radius: 24px;
+
+     box-sizing: border-box;
+     flex-wrap: wrap;
+
+     gap: 10px;
+}
+
+.option-box {
+     flex: 1 1 200px;
+     height: auto;
+
+     background: rgba(213, 205, 205, 0.7);
+     box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.25);
+     backdrop-filter: blur(50px);
+     border-radius: 18px;
+
+     min-height: 200px;
+
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+
+     box-sizing: border-box;
+}
+
+.buttons-con {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+
+     width: 100%;
+     max-width: 100%;
+     height: 100px;
+     padding: 10px;
+     margin-top: 90px;
+
+     background: rgba(0, 0, 0, 0.41);
+     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+     backdrop-filter: blur(50px);
+     border-radius: 24px;
+     box-sizing: border-box;
+     flex-wrap: wrap;
+}
