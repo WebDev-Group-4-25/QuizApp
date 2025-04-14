@@ -124,6 +124,15 @@ body {
      top: 40px;
 }
 
+.bubble-text {
+     font-weight: 500;
+     font-size: 16px;
+     line-height: 24px;
+     display: flex;
+     align-items: center;
+     text-align: center;
+}
+
 .main-container {
      margin-top: 160px;
      padding: 15px;
@@ -257,6 +266,22 @@ body {
      text-align: center;
 
      box-sizing: border-box;
+}
+
+.options-con .option-box:nth-child(1) {
+     background-color: #C9A246;
+}
+
+.options-con .option-box:nth-child(2) {
+     background-color: #C96146;
+}
+
+.options-con .option-box:nth-child(3) {
+     background-color: #C94685;
+}
+
+.options-con .option-box:nth-child(4) {
+     background-color: #9546C9;
 }
 
 .buttons-con {
