@@ -1,0 +1,137 @@
+[
+     {
+          "text": "What does HTML stand for?",
+          "options": [
+               "HyperText Markup Language",
+               "HyperText Machine Language",
+               "HighText Markup Language",
+               "HyperText Marking Language"
+          ]
+     },
+     {
+          "text": "Which HTML tag is used to link an external CSS file?",
+          "options": [
+               "<link>",
+               "<style>",
+               "<css>",
+               "<script>"
+          ]
+     },
+     {
+          "text": "What is the purpose of CSS?",
+          "options": [
+               "To style the content of a web page",
+               "To structure the content of a web page",
+               "To create interactivity on the page",
+               "To store data in a database"
+          ]
+     },
+     {
+          "text": "What is JavaScript mainly used for in web development?",
+          "options": [
+               "To style the website",
+               "To structure the website",
+               "To add interactivity and dynamic content",
+               "To manage databases"
+          ]
+     },
+     {
+          "text": "Which of the following is a popular front-end framework?",
+          "options": [
+               "Node.js",
+               "Django",
+               "React",
+               "Spring"
+          ]
+     },
+     {
+          "text": "What is the purpose of the <div> tag in HTML?",
+          "options": [
+               "To create a link",
+               "To structure the page and group content",
+               "To style text",
+               "To display images"
+          ]
+     },
+     {
+          "text": "What is the difference between padding and margin in CSS?",
+          "options": [
+               "Padding is the space outside an element; margin is inside the element",
+               "Padding is inside the element; margin is outside the element",
+               "Both are the same",
+               "Padding and margin are used to style text"
+          ]
+     },
+     {
+          "text": "Which CSS property is used to change the text color?",
+          "options": [
+               "font-color",
+               "text-color",
+               "color",
+               "font-style"
+          ]
+     },
+     {
+          "text": "What does the 'flexbox' layout in CSS help with?",
+          "options": [
+               "Aligning elements vertically",
+               "Creating grid layouts",
+               "Aligning elements horizontally and distributing space",
+               "Styling fonts"
+          ]
+     },
+     {
+          "text": "Which method is commonly used to make a website responsive?",
+          "options": [
+               "Using inline styles",
+               "Using media queries",
+               "Using JavaScript only",
+               "Using external databases"
+          ]
+     },
+     {
+          "text": "Which HTTP method is used to retrieve data from a server?",
+          "options": [
+               "POST",
+               "GET",
+               "PUT",
+               "DELETE"
+          ]
+     },
+     {
+          "text": "What is AJAX used for in web development?",
+          "options": [
+               "To store data",
+               "To make asynchronous requests and update parts of a page without reloading",
+               "To create images",
+               "To generate HTML dynamically"
+          ]
+     },
+     {
+          "text": "What is the purpose of the 'alt' attribute in an image tag (<img>)?",
+          "options": [
+               "To specify the width of the image",
+               "To provide alternative text for screen readers",
+               "To specify the image's size",
+               "To create a hyperlink for the image"
+          ]
+     },
+     {
+          "text": "Which of the following is a back-end technology?",
+          "options": [
+               "React",
+               "Vue.js",
+               "Node.js",
+               "Bootstrap"
+          ]
+     },
+     {
+          "text": "What is the function of a web API?",
+          "options": [
+               "To display content",
+               "To manage user authentication",
+               "To allow different software applications to communicate",
+               "To style a webpage"
+          ]
+     }
+]
