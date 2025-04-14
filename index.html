@@ -25,9 +25,7 @@
           <div class="bubble-tail-small"></div>
           <div class="bubble-tail-large"></div>
           <div class="bubble-chat">
-               <span class="bubble-text">Hello there!</span>
-               <span class="bubble-text"></span>
-               <span class="typing" style="display: none">...</span>
+               <span class="bubble-text">Hi there! 👋🏻</span>
           </div>
      </div>
 
@@ -53,36 +51,6 @@
                <div class="next-button"></div>
           </div>
      </div>
-
-     <script>
-          const messages = [
-               "Good luck! 💪🏽",
-               "Great job! 👏🏽",
-               "Someone's been practicing! 🤓"
-          ];
-
-          let current = 0;
-
-          function cycleMessages() {
-               if (current >= messages.length) return;
-
-               showBubble(messages[current], 1200, 4000); // typing delay, stay duration
-
-               // Show next message after total delay (typing + stay + pause)
-               setTimeout(() => {
-                    current++;
-                    cycleMessages(); // call recursively
-               }, 1200 + 4000 + 1000); // adjust this for timing between
-          }
-
-          // Start the cycle after initial delay
-          setTimeout(() => {
-               cycleMessages();
-          }, 2000); // wait 2s before first message
-     </script>
-
-
 </body>
-
 
 </html>
