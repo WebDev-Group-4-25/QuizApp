@@ -54,34 +54,27 @@
                <div class="next-button"></div>
           </div>
      </div>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
      <script>
           $(document).ready(function () {
-               const questions = [
-                    {
-                         text: "What is the difference between HTML, CSS, and JavaScript in web development?",
-                         options: ["HTML is used for styling, CSS is for structure, and JavaScript for layout.",
-                              "HTML is used for structure, CSS for styling, and JavaScript for behavior.",
-                              "HTML is for the behavior of the page, CSS for structure, and JavaScript for styling.",
-                              "TML, CSS, and JavaScript are all used for the same purpose."]
-                    },
-                    {
-                         text: "How does responsive design improve user experience across different devices?",
-                         options: ["It ensures the website has the same layout on all devices.",
-                              "It adjusts the layout and content to fit different screen sizes and orientations.",
-                              "It eliminates the need for different versions of the website.",
-                              "It automatically detects the user's device type and changes the website's color scheme."]
-                    },
-                    {
-                         text: "What are the advantages of using frameworks like React or Vue.js over plain JavaScript?",
-                         options: ["They provide built-in HTML structure.",
-                              "They allow for easier management of dynamic content and state.",
-                              "They increase page load time significantly.",
-                              "They eliminate the need for back-end development."]
-                    }
-               ];
-
+               let questions = [];
                let current = 0;
 
+               // Load questions from the JSON file
+               $.ajax({
+                    url: 'questions.json',  // URL of the JSON file
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                         questions = data;  // Store the questions in the 'questions' array
+                         loadQuestion(current);  // Load the first question
+                    },
+                    error: function () {
+                         alert("Failed to load questions.");
+                    }
+               });
+
+               // Load a specific question based on the current index
                function loadQuestion(index) {
                     const q = questions[index];
                     $(".question-text").text(q.text);
@@ -89,20 +82,31 @@
 
                     $(".option-box").each(function (i) {
                          $(this).text(q.options[i]);
+                         $(this).off('click').on('click', function () {
+                              nextQuestion();  // Move to the next question when an option is selected
+                         });
                     });
                }
 
-               // Initial load
-               loadQuestion(current);
-
-               // Handle option click
-               $(".option-box").click(function () {
+               // Go to the next question
+               function nextQuestion() {
                     if (current < questions.length - 1) {
                          current++;
                          loadQuestion(current);
                     } else {
                          $(".question-text").text("You’ve completed the quiz!");
-                         $(".option-box").hide();
+                         $(".option-box").hide();  // Hide options after the last question
+                    }
+               }
+
+               // Next button functionality
+               $(".next-button").click(nextQuestion);
+
+               // Back button functionality
+               $(".back-button").click(function () {
+                    if (current > 0) {
+                         current--;
+                         loadQuestion(current);
                     }
                });
           });
