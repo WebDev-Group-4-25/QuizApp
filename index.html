@@ -6,6 +6,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <title>Quiz App</title>
      <link rel="stylesheet" href="styles.css" />
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
      <script src="script.js"></script>
 </head>
 
@@ -31,9 +32,11 @@
 
      <div class="main-container">
           <div class="number-question">
-               <p>5 / 10</p>
+               <p></p>
           </div>
-          <div class="question-box"></div>
+          <div class="question-box">
+               <p class="question-text"></p>
+          </div>
 
           <div class="timer-bar">
                <div class="timer-fill"></div>
@@ -51,6 +54,59 @@
                <div class="next-button"></div>
           </div>
      </div>
+     <script>
+          $(document).ready(function () {
+               const questions = [
+                    {
+                         text: "What is the difference between HTML, CSS, and JavaScript in web development?",
+                         options: ["HTML is used for styling, CSS is for structure, and JavaScript for layout.",
+                              "HTML is used for structure, CSS for styling, and JavaScript for behavior.",
+                              "HTML is for the behavior of the page, CSS for structure, and JavaScript for styling.",
+                              "TML, CSS, and JavaScript are all used for the same purpose."]
+                    },
+                    {
+                         text: "How does responsive design improve user experience across different devices?",
+                         options: ["It ensures the website has the same layout on all devices.",
+                              "It adjusts the layout and content to fit different screen sizes and orientations.",
+                              "It eliminates the need for different versions of the website.",
+                              "It automatically detects the user's device type and changes the website's color scheme."]
+                    },
+                    {
+                         text: "What are the advantages of using frameworks like React or Vue.js over plain JavaScript?",
+                         options: ["They provide built-in HTML structure.",
+                              "They allow for easier management of dynamic content and state.",
+                              "They increase page load time significantly.",
+                              "They eliminate the need for back-end development."]
+                    }
+               ];
+
+               let current = 0;
+
+               function loadQuestion(index) {
+                    const q = questions[index];
+                    $(".question-text").text(q.text);
+                    $(".number-question p").text((index + 1) + " / " + questions.length);
+
+                    $(".option-box").each(function (i) {
+                         $(this).text(q.options[i]);
+                    });
+               }
+
+               // Initial load
+               loadQuestion(current);
+
+               // Handle option click
+               $(".option-box").click(function () {
+                    if (current < questions.length - 1) {
+                         current++;
+                         loadQuestion(current);
+                    } else {
+                         $(".question-text").text("You’ve completed the quiz!");
+                         $(".option-box").hide();
+                    }
+               });
+          });
+     </script>
 </body>
 
 </html>
