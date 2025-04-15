@@ -49,6 +49,7 @@ $(document).ready(function () {
                OptionManager.hideAll();
 
                $(".timer-bar").hide();
+               $(".options-con").hide();
           }
      }
 
