@@ -281,7 +281,18 @@ html, body {
      color: #1e1e1e;
      font-weight: 500;
      padding: 10px;
+     border: 3px solid transparent;
+
+     cursor: pointer;
+     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.option-box:hover {
+     transform: scale(1.02);
+     border: 3px solid #d5cdcd;
+     box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
 
 .options-con .option-box:nth-child(1) {
      background-color: #C9A246;
