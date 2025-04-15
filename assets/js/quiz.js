@@ -47,6 +47,8 @@ $(document).ready(function () {
           } else {
                $(".question-text").text("You've completed the quiz!");
                OptionManager.hideAll();
+
+               $(".timer-bar").hide();
           }
      }
 
