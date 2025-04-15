@@ -11,7 +11,7 @@ $(document).ready(function () {
      });
 
      $.ajax({
-          url: 'questions.json',
+          url: 'assets/data/questions.json',
           type: 'GET',
           dataType: 'json',
           success: function (data) {
@@ -45,7 +45,7 @@ $(document).ready(function () {
                current++;
                loadQuestion(current);
           } else {
-               $(".question-text").text("You’ve completed the quiz!");
+               $(".question-text").text("You've completed the quiz!");
                OptionManager.hideAll();
           }
      }
