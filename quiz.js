@@ -29,11 +29,9 @@ $(document).ready(function () {
           $(".question-text").text(q.text);
           $(".number-question p").text((index + 1) + " / " + questions.length);
 
-          $(".option-box").each(function (i) {
-               $(this).text(q.options[i]).off('click').on('click', () => {
-                    hasAnswered = true;
-                    nextQuestion();
-               });
+          OptionManager.render(q.options, (selectedIndex) => {
+               hasAnswered = true;
+               nextQuestion();
           });
 
           timer.reset();
@@ -48,7 +46,7 @@ $(document).ready(function () {
                loadQuestion(current);
           } else {
                $(".question-text").text("You’ve completed the quiz!");
-               $(".option-box").hide();
+               OptionManager.hideAll();
           }
      }
 
