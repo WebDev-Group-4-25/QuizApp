@@ -44,4 +44,28 @@ class Timer {
           clearInterval(this.interval);
           clearTimeout(this.timeout);
      }
+
+     static timerStarts(callback) {
+          const $overlay = $("#countdown-overlay");
+          const $number = $("#countdown-number");
+
+          $overlay.show();
+          let countdown = 3;
+
+          function showNextNumber() {
+               if (countdown === 0) {
+                    $overlay.fadeOut(300, () => {
+                         $("#quiz-screen").fadeIn(300);
+                         callback();
+                    });
+                    return;
+               }
+
+               $number.hide().text(countdown).fadeIn(300).delay(400).fadeOut(300, () => {
+                    countdown--;
+                    showNextNumber();
+               });
+          }
+          showNextNumber();
+     }
 }
