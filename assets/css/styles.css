@@ -73,6 +73,11 @@ body {
      filter: brightness(110%);
 }
 
+#entry-screen img {
+     max-width: 50%;
+     height: auto;
+}
+
 #entry-screen h1 {
      margin: 5px;
      font-weight: 800;
@@ -397,6 +402,7 @@ body {
 }
 
 #countdown-number {
+     font-weight: 700;
      font-size: 8rem;
      color: white;
      animation: pop 1s ease-in-out infinite;
