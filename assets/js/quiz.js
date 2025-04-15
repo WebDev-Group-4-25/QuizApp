@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
      $("#quiz-screen").hide();
+     $(".play-again-btn").hide();
      $("#countdown-overlay").hide();
+     $(".dark-overlay").hide();
 
      $("#start-button").click(function () {
           $("#entry-screen").fadeOut(300, function () {
@@ -61,6 +63,8 @@ $(document).ready(function () {
 
                     $(".timer-bar").hide();
                     $(".options-con").hide();
+                    $(".dark-overlay").show();
+                    $(".play-again-btn").show();
                }
           }
 
