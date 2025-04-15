@@ -13,27 +13,27 @@
 
      <div class="streak-counter">
           <img src="assets/fire-flame.gif" alt="Streak Icon" />
-          <p>25</p>
+          <p>25</p> <!-- /* Streak counter: Sample only - should be handled on the backend */ --> 
      </div>
 
      <div class="avatar-container">
           <img src="assets/coder-ai.png" alt="Girl Developer" />
      </div>
 
-     <div class="avatar-bubble-chat">
+     <div class="avatar-bubble-chat"> <!-- /* Chat bubble for the avatar: The idea is to display messages whenever the user gets the correct answer */ -->
           <div class="bubble-tail-small"></div>
           <div class="bubble-tail-large"></div>
           <div class="bubble-chat">
-               <span class="bubble-text">Hi there! 👋🏻</span>
+               <span class="bubble-text">Hi there! 👋🏻</span> <!-- /* Needs backend implementation */ -->
           </div>
      </div>
 
      <div class="main-container">
           <div class="number-question">
-               <p></p>
+               <p>3 / 5</p>  <!-- /* Current item counter: Sample only - should be handled on the backend (DONE) */ --> 
           </div>
           <div class="question-box">
-               <p class="question-text"></p>
+               <p class="question-text">What is web development?</p> <!-- /* String for question: Sample only - should be handled on the backend (DONE) */ -->
           </div>
 
           <div class="timer-bar">
@@ -54,7 +54,9 @@
      </div>
 
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <script src="quiz.js"></script>
+     <script src="quiz.js"></script> <!-- /* Quiz logic - handles the quiz logic and interactions */ -->
+     <script src="timer.js"></script> <!-- /* Timer logic - handles the timer functionality */ -->
+     <script src="options.js"></script> <!-- /* Options logic - handles the options and their interactions */ -->  
      <script src="script.js"></script>
 
 </body>
