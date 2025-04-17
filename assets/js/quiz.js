@@ -14,6 +14,8 @@ $(document).ready(function () {
      function startQuiz() {
           let questions = [];
           let current = 0;
+          let score = 0;
+          let streak = 0;
           let hasAnswered = false;
 
           let timer = new Timer(10, () => {
@@ -44,6 +46,16 @@ $(document).ready(function () {
 
                OptionManager.render(q.options, (selectedIndex) => {
                     hasAnswered = true;
+
+                    if (selectedIndex === q.correctIndex) {
+                         score++;
+                         streak++;
+                    } else {
+                         streak = 0;
+                    }
+
+                    updateStreak(streak);
+
                     nextQuestion();
                });
 
@@ -66,6 +78,10 @@ $(document).ready(function () {
                     $(".dark-overlay").show();
                     $(".play-again-btn").show();
                }
+          }
+
+          function updateStreak(streak) {
+               $(".streak-counter").text(`${streak}`);
           }
 
           $(".next-button").click(() => {
