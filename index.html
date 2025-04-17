@@ -10,6 +10,10 @@
 </head>
 
 <body>
+     <audio id="background-music" src="assets/audio/background-music.mp3" loop></audio>
+     <audio id="clapping-sound" src="assets/audio/clapping-sfx.mp3"></audio>
+     <button id="mute-button">Mute</button>  
+     
      <div class="background-image"></div>
 
      <div id="entry-screen">
@@ -55,10 +59,17 @@
                     <div class="option-box"></div>
                     <div class="option-box"></div>
                </div>
-     
+
+               <!-- Quiz results section -->
+               <div class="quiz-results">
+                    <p id="final-score">Your Score: 0 / 0</p>
+               </div>
+
                <button class="play-again-btn">Play Again</button>
           </div>
      </div>
+
+     
 
      <div id="countdown-overlay">
           <div id="countdown-number">3</div>

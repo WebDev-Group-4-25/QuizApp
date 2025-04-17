@@ -9,6 +9,9 @@ $(document).ready(function () {
           $("#entry-screen").fadeOut(300, function () {
                Timer.timerStarts(startQuiz);
           });
+          music.volume = 0.25;
+          clappingSound.volume = 0.25;
+          music.play();
      });
 
      const positiveMessages = [
@@ -28,6 +31,21 @@ $(document).ready(function () {
      ];
 
      const completionMessage = "Congratulations! You've completed the quiz! 🎊";
+
+     const music = document.getElementById("background-music");
+     const clappingSound = document.getElementById("clapping-sound");
+     const muteButton = document.getElementById("mute-button");
+
+     /* Mute/Unmute toggle */
+     muteButton.addEventListener("click", function () {
+          if (music.muted) {
+          music.muted = false;
+          muteButton.textContent = "Mute";
+          } else {
+          music.muted = true;
+          muteButton.textContent = "Unmute";
+          }
+     });
 
      function startQuiz() {
           let questions = [];
@@ -73,25 +91,25 @@ $(document).ready(function () {
                     const options = $(".option-box");
                 
                     options.each((index, option) => {
-                        if (index === selectedIndex) {
-                            if (index === q.correctIndex) {
-                                $(option).addClass("option-correct");
-                                increaseStreak();
-                                showAvatarMessage(true);
-                            } else {
-                                $(option).addClass("option-incorrect");
-                                resetStreak();
-                                showAvatarMessage(false);
-                            }
-                        }
+                         if (index === selectedIndex) {
+                              if (index === q.correctIndex) {
+                                   score++;
+                                   increaseStreak();
+                                   showAvatarMessage(true);
+                              } else {
+                                   $(option).addClass("option-incorrect");
+                                   resetStreak();
+                                   showAvatarMessage(false);
+                              }
+                         }
                 
-                        // Highlight the correct answer in green
-                        if (index === q.correctIndex) {
+                         // Highlight the correct answer in green
+                         if (index === q.correctIndex) {
                             $(option).addClass("option-correct");
-                        }
+                         }
                 
-                        // Disable all options after an answer is selected
-                        $(option).addClass("option-disabled");
+                         // Disable all options after an answer is selected
+                         $(option).addClass("option-disabled");
                     });
                 
                     setTimeout(() => {
@@ -105,22 +123,24 @@ $(document).ready(function () {
 
           function nextQuestion() {
                timer.stop();
-
+           
                if (current < questions.length - 1) {
-                    current++;
-                    loadQuestion(current);
+                   current++;
+                   loadQuestion(current);
                } else {
-                    $(".question-text").text("You've completed the quiz!");
-                    OptionManager.hideAll();
-
-                    $(".timer-bar").hide();
-                    $(".options-con").hide();
-                    $(".dark-overlay").show();
-                    $(".play-again-btn").show();
-
-                    showCompletionMessage();
+                   $(".question-text").text("You've completed the quiz!");
+                   OptionManager.hideAll();
+           
+                   $(".timer-bar").hide();
+                   $(".options-con").hide();
+                   $(".dark-overlay").show();
+                   $(".play-again-btn").show();
+           
+                   showCompletionMessage(score, questions.length); // Pass score and total questions
+                   music.pause();
+                   playClappingSound();
                }
-          }
+           }
 
           function shuffleArray(array) {
                for (let i = array.length - 1; i > 0; i--) {
@@ -180,20 +200,24 @@ $(document).ready(function () {
                }, 2000);
           }
 
-          function showCompletionMessage() {
+          function showCompletionMessage(score, totalQuestions) {
                const bubble = $(".bubble-chat");
                const bubbleText = $(".bubble-text");
-   
+               const finalScoreDisplay = $("#final-score");
+           
                /* Update the text with the completion message */
                bubbleText.text(completionMessage);
                bubble.addClass("show");
+           
+               // Display the final score
+               finalScoreDisplay.text(`Your Score: ${score} / ${totalQuestions}`);
           }
 
           function resetAvatarMessage() {
                const bubble = $(".bubble-chat");
                const bubbleText = $(".bubble-text");
    
-               // Reset the avatar bubble to its default message
+               /* Reset the avatar bubble to its default message */
                bubbleText.text("Hi there! 👋🏻");
                bubble.removeClass("show");
           }
@@ -205,6 +229,10 @@ $(document).ready(function () {
                hasAnswered = true;
                nextQuestion();
           });
+
+          function playClappingSound() {
+               clappingSound.play();
+          }
 
           $(".play-again-btn").click(() => {
                resetQuiz();
