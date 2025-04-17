@@ -11,8 +11,11 @@
 
 <body>
      <audio id="background-music" src="assets/audio/background-music.mp3" loop></audio>
-     <audio id="clapping-sound" src="assets/audio/clapping-sfx.mp3"></audio>
-     <button id="mute-button">Mute</button>  
+     <audio id="clapping-sound" src="assets/audio/clapping-sfx.mp3"></audio>     
+   
+     <div id="music-button">
+          <p id="music-content">🔊</p>
+     </div>
      
      <div class="background-image"></div>
 
@@ -26,27 +29,27 @@
      <div id="quiz-screen">
           <div class="streak-counter">
                <img src="assets/img/fire-flame.gif" alt="Streak Icon" draggable="false"/>
-               <p>0</p> <!-- /* Streak counter: Sample only - should be handled on the backend */ --> 
+               <p>0</p>
           </div>
      
           <div class="avatar-container">
                <img src="assets/img/coder-ai.png" alt="Girl Developer" draggable="false"/>
           </div>
      
-          <div class="avatar-bubble-chat"> <!-- /* Chat bubble for the avatar: The idea is to display messages whenever the user gets the correct answer */ -->
+          <div class="avatar-bubble-chat"> 
                <div class="bubble-tail-small"></div>
                <div class="bubble-tail-large"></div>
                <div class="bubble-chat">
-                    <span class="bubble-text">Hi there! 👋🏻</span> <!-- /* Needs backend implementation */ -->
+                    <span class="bubble-text">Hi there! 👋🏻</span> 
                </div>
           </div>
      
           <div class="main-container">
                <div class="number-question">
-                    <p>3 / 5</p>  <!-- /* Current item counter: Sample only - should be handled on the backend (DONE) */ --> 
+                    <p>3 / 5</p>  
                </div>
                <div class="question-box">
-                    <p class="question-text">What is web development?</p> <!-- /* String for question: Sample only - should be handled on the backend (DONE) */ -->
+                    <p class="question-text">What is web development?</p> 
                </div>
      
                <div class="timer-bar">
