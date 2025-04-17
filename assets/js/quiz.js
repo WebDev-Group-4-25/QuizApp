@@ -59,23 +59,44 @@ $(document).ready(function () {
 
           function loadQuestion(index) {
                hasAnswered = false;
+
+               // Reset option styles
+               $(".option-box").removeClass("option-correct option-incorrect option-disabled");
+
                const q = questions[index];
                $(".question-text").text(q.text);
                $(".number-question p").text((index + 1) + " / " + questions.length);
    
                OptionManager.render(q.options, (selectedIndex) => {
-                   hasAnswered = true;
-
-                   if (selectedIndex === q.correctIndex) {
-                       score++;
-                       increaseStreak();
-                       showAvatarMessage(true);
-                   } else {
-                       resetStreak(); 
-                       showAvatarMessage(false);
-                   }
-   
-                   nextQuestion();
+                    hasAnswered = true;
+                
+                    const options = $(".option-box");
+                
+                    options.each((index, option) => {
+                        if (index === selectedIndex) {
+                            if (index === q.correctIndex) {
+                                $(option).addClass("option-correct");
+                                increaseStreak();
+                                showAvatarMessage(true);
+                            } else {
+                                $(option).addClass("option-incorrect");
+                                resetStreak();
+                                showAvatarMessage(false);
+                            }
+                        }
+                
+                        // Highlight the correct answer in green
+                        if (index === q.correctIndex) {
+                            $(option).addClass("option-correct");
+                        }
+                
+                        // Disable all options after an answer is selected
+                        $(option).addClass("option-disabled");
+                    });
+                
+                    setTimeout(() => {
+                        nextQuestion();
+                    }, 2000);
                });
    
                timer.reset();

@@ -392,6 +392,23 @@ body {
      background-color: #9546C9;
 }
 
+.option-correct {
+     background-color: #4CAF50 !important; /* Green for correct answers */
+     color: white;
+     border: 3px solid white;
+}
+ 
+.option-incorrect {
+     background-color: #F44336 !important; /* Red for incorrect answers */
+     color: white;
+     border: 3px solid white;
+}
+ 
+.option-disabled {
+     pointer-events: none; /* Disable further clicks on options */
+     opacity: 0.7;
+}
+
 #countdown-overlay {
      position: fixed;
      top: 0;
