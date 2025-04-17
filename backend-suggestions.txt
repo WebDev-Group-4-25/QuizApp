@@ -1,9 +1,9 @@
-[ ] The avatar's chat bubble displays reinforcement messages whenever the user selects the correct answer.
+[DONE] The avatar's chat bubble displays reinforcement messages whenever the user selects the correct answer.
 
-[ ] The avatar changes appearance based on the user's answer — it looks happy if the answer is correct, sad if incorrect, and shows a neutral smile by default.
+[X] The avatar changes appearance based on the user's answer — it looks happy if the answer is correct, sad if incorrect, and shows a neutral smile by default.
 
-[ ] The streak counter should reset to zero when the user gets a wrong answer; otherwise, it should continue counting the user's correct answers.
+[DONE] The streak counter should reset to zero when the user gets a wrong answer; otherwise, it should continue counting the user's correct answers.
 
-[ ] At the end of the quiz, the user should be able to play again with a new set of questions (either entirely different or reshuffled/rephrased for mastery).
+[DONE] At the end of the quiz, the user should be able to play again with a new set of questions (either entirely different or reshuffled/rephrased for mastery).
 
-[ ] The correct answer should be revealed after each question is answered.
+[DONE] The correct answer should be revealed after each question is answered.
