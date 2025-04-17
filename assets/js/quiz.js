@@ -15,13 +15,14 @@ $(document).ready(function () {
           let questions = [];
           let current = 0;
           let score = 0;
-          let streak = 0;
+          let streakValue = 0;
           let hasAnswered = false;
 
           let timer = new Timer(10, () => {
                if (!hasAnswered) {
-                    hasAnswered = true;
-                    nextQuestion();
+                   resetStreak(); 
+                   hasAnswered = true;
+                   nextQuestion();
                }
           });
 
@@ -43,22 +44,21 @@ $(document).ready(function () {
                const q = questions[index];
                $(".question-text").text(q.text);
                $(".number-question p").text((index + 1) + " / " + questions.length);
-
+   
                OptionManager.render(q.options, (selectedIndex) => {
-                    hasAnswered = true;
-
-                    if (selectedIndex === q.correctIndex) {
-                         score++;
-                         streak++;
-                    } else {
-                         streak = 0;
-                    }
-
-                    updateStreak(streak);
-
-                    nextQuestion();
+                   hasAnswered = true;
+   
+                   // Check if the selected answer is correct
+                   if (selectedIndex === q.correctIndex) {
+                       score++;
+                       increaseStreak(); 
+                   } else {
+                       resetStreak(); 
+                   }
+   
+                   nextQuestion();
                });
-
+   
                timer.reset();
                timer.start();
           }
@@ -78,10 +78,6 @@ $(document).ready(function () {
                     $(".dark-overlay").show();
                     $(".play-again-btn").show();
                }
-          }
-
-          function updateStreak(streak) {
-               $(".streak-counter").text(`${streak}`);
           }
 
           function shuffleArray(array) {
@@ -104,14 +100,34 @@ $(document).ready(function () {
                loadQuestion(current); // Restart from the first question
           }
 
+          function increaseStreak() {
+               streakValue++;
+               updateStreakCounter(streakValue);
+               }
+          
+          function resetStreak() {
+               streakValue = 0;
+               updateStreakCounter(streakValue);
+          }
+          
+          function updateStreakCounter(value) {
+               $(".streak-counter p").text(value);
+               $(".streak-counter").addClass("streak-update-animation");
+               setTimeout(() => {
+                    $(".streak-counter").removeClass("streak-update-animation");
+               }, 300);
+          }
+
           $(".next-button").click(() => {
+               if (!hasAnswered) {
+                   resetStreak(); 
+               }
                hasAnswered = true;
                nextQuestion();
           });
 
           $(".play-again-btn").click(() => {
                resetQuiz();
-           });
-
+          });
      }
 });
