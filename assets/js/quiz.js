@@ -30,7 +30,7 @@ $(document).ready(function () {
                type: 'GET',
                dataType: 'json',
                success: function (data) {
-                    questions = data;
+                    questions = shuffleArray(data);
                     loadQuestion(current);
                },
                error: function () {
@@ -84,16 +84,34 @@ $(document).ready(function () {
                $(".streak-counter").text(`${streak}`);
           }
 
+          function shuffleArray(array) {
+               for (let i = array.length - 1; i > 0; i--) {
+                   const j = Math.floor(Math.random() * (i + 1));
+                   [array[i], array[j]] = [array[j], array[i]];
+               }
+               return array;
+          }
+
+          function resetQuiz() {
+               current = 0;
+               score = 0;
+               streak = 0;
+               questions = shuffleArray(questions); // Reshuffle the questions
+               $(".dark-overlay").hide();
+               $(".play-again-btn").hide();
+               $(".timer-bar").show();
+               $(".options-con").show();
+               loadQuestion(current); // Restart from the first question
+          }
+
           $(".next-button").click(() => {
                hasAnswered = true;
                nextQuestion();
           });
 
-          $(".back-button").click(function () {
-               if (current > 0) {
-                    current--;
-                    loadQuestion(current);
-               }
-          });
+          $(".play-again-btn").click(() => {
+               resetQuiz();
+           });
+
      }
 });
