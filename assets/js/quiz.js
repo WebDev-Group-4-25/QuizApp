@@ -11,6 +11,24 @@ $(document).ready(function () {
           });
      });
 
+     const positiveMessages = [
+          "Great job! 🎉",
+          "You nailed it! 🌟",
+          "Keep it up! 👍",
+          "Correct! 💯",
+          "You're on fire! 🔥"
+     ];
+  
+     const negativeMessages = [
+          "Better luck next time! 🙁",
+          "Oops, that's incorrect. 😔",
+          "Don't give up! Try the next one! 💪",
+          "Not quite right. Give it another shot! ✨",
+          "You'll get it next time! 🔄"
+     ];
+
+     const completionMessage = "Congratulations! You've completed the quiz! 🎊";
+
      function startQuiz() {
           let questions = [];
           let current = 0;
@@ -47,13 +65,14 @@ $(document).ready(function () {
    
                OptionManager.render(q.options, (selectedIndex) => {
                    hasAnswered = true;
-   
-                   // Check if the selected answer is correct
+
                    if (selectedIndex === q.correctIndex) {
                        score++;
-                       increaseStreak(); 
+                       increaseStreak();
+                       showAvatarMessage(true);
                    } else {
                        resetStreak(); 
+                       showAvatarMessage(false);
                    }
    
                    nextQuestion();
@@ -77,6 +96,8 @@ $(document).ready(function () {
                     $(".options-con").hide();
                     $(".dark-overlay").show();
                     $(".play-again-btn").show();
+
+                    showCompletionMessage();
                }
           }
 
@@ -92,12 +113,13 @@ $(document).ready(function () {
                current = 0;
                score = 0;
                streak = 0;
-               questions = shuffleArray(questions); // Reshuffle the questions
+               questions = shuffleArray(questions);
                $(".dark-overlay").hide();
                $(".play-again-btn").hide();
                $(".timer-bar").show();
                $(".options-con").show();
-               loadQuestion(current); // Restart from the first question
+               loadQuestion(current);
+               resetAvatarMessage();
           }
 
           function increaseStreak() {
@@ -116,6 +138,43 @@ $(document).ready(function () {
                setTimeout(() => {
                     $(".streak-counter").removeClass("streak-update-animation");
                }, 300);
+          }
+
+          function showAvatarMessage(isCorrect) {
+               const bubble = $(".bubble-chat");
+               const bubbleText = $(".bubble-text");
+   
+               /* Select a message based on whether the answer is correct or not */
+               const message = isCorrect
+                   ? positiveMessages[Math.floor(Math.random() * positiveMessages.length)]
+                   : negativeMessages[Math.floor(Math.random() * negativeMessages.length)];
+   
+               /* Update the text and show the bubble */
+               bubbleText.text(message);
+               bubble.addClass("show");
+   
+               /* Hide the bubble after 2 seconds */
+               setTimeout(() => {
+                   bubble.removeClass("show");
+               }, 2000);
+          }
+
+          function showCompletionMessage() {
+               const bubble = $(".bubble-chat");
+               const bubbleText = $(".bubble-text");
+   
+               /* Update the text with the completion message */
+               bubbleText.text(completionMessage);
+               bubble.addClass("show");
+          }
+
+          function resetAvatarMessage() {
+               const bubble = $(".bubble-chat");
+               const bubbleText = $(".bubble-text");
+   
+               // Reset the avatar bubble to its default message
+               bubbleText.text("Hi there! 👋🏻");
+               bubble.removeClass("show");
           }
 
           $(".next-button").click(() => {
