@@ -6,7 +6,8 @@
                "HyperText Machine Language",
                "HighText Markup Language",
                "HyperText Marking Language"
-          ]
+          ],
+          "correctIndex": 0
      },
      {
           "text": "Which HTML tag is used to link an external CSS file?",
@@ -15,7 +16,8 @@
                "<style>",
                "<css>",
                "<script>"
-          ]
+          ],
+          "correctIndex": 0
      },
      {
           "text": "What is the purpose of CSS?",
@@ -24,7 +26,8 @@
                "To structure the content of a web page",
                "To create interactivity on the page",
                "To store data in a database"
-          ]
+          ],
+          "correctIndex": 0
      },
      {
           "text": "What is JavaScript mainly used for in web development?",
@@ -33,7 +36,8 @@
                "To structure the website",
                "To add interactivity and dynamic content",
                "To manage databases"
-          ]
+          ],
+          "correctIndex": 2
      },
      {
           "text": "Which of the following is a popular front-end framework?",
@@ -42,7 +46,8 @@
                "Django",
                "React",
                "Spring"
-          ]
+          ],
+          "correctIndex": 2
      },
      {
           "text": "What is the purpose of the <div> tag in HTML?",
@@ -51,7 +56,8 @@
                "To structure the page and group content",
                "To style text",
                "To display images"
-          ]
+          ],
+          "correctIndex": 1
      },
      {
           "text": "What is the difference between padding and margin in CSS?",
@@ -60,7 +66,8 @@
                "Padding is inside the element; margin is outside the element",
                "Both are the same",
                "Padding and margin are used to style text"
-          ]
+          ],
+          "correctIndex": 1
      },
      {
           "text": "Which CSS property is used to change the text color?",
@@ -69,7 +76,8 @@
                "text-color",
                "color",
                "font-style"
-          ]
+          ],
+          "correctIndex": 2
      },
      {
           "text": "What does the 'flexbox' layout in CSS help with?",
@@ -78,7 +86,8 @@
                "Creating grid layouts",
                "Aligning elements horizontally and distributing space",
                "Styling fonts"
-          ]
+          ],
+          "correctIndex": 2
      },
      {
           "text": "Which method is commonly used to make a website responsive?",
@@ -87,7 +96,8 @@
                "Using media queries",
                "Using JavaScript only",
                "Using external databases"
-          ]
+          ],
+          "correctIndex": 1
      },
      {
           "text": "Which HTTP method is used to retrieve data from a server?",
@@ -96,7 +106,8 @@
                "GET",
                "PUT",
                "DELETE"
-          ]
+          ],
+          "correctIndex": 1
      },
      {
           "text": "What is AJAX used for in web development?",
@@ -105,7 +116,8 @@
                "To make asynchronous requests and update parts of a page without reloading",
                "To create images",
                "To generate HTML dynamically"
-          ]
+          ],
+          "correctIndex": 1
      },
      {
           "text": "What is the purpose of the 'alt' attribute in an image tag (<img>)?",
@@ -114,7 +126,8 @@
                "To provide alternative text for screen readers",
                "To specify the image's size",
                "To create a hyperlink for the image"
-          ]
+          ],
+          "correctIndex": 1
      },
      {
           "text": "Which of the following is a back-end technology?",
@@ -123,7 +136,8 @@
                "Vue.js",
                "Node.js",
                "Bootstrap"
-          ]
+          ],
+          "correctIndex": 2
      },
      {
           "text": "What is the function of a web API?",
@@ -132,6 +146,7 @@
                "To manage user authentication",
                "To allow different software applications to communicate",
                "To style a webpage"
-          ]
+          ],
+          "correctIndex": 2
      }
 ]
