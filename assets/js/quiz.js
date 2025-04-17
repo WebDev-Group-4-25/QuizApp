@@ -178,6 +178,13 @@ $(document).ready(function () {
                $(".timer-bar").show();
                $(".options-con").show();
                loadQuestion(current);
+
+               clappingSound.pause();
+               clappingSound.currentTime = 0;
+               music.pause();
+               music.currentTime = 0;
+               music.play();
+
                resetAvatarMessage();
           }
      
